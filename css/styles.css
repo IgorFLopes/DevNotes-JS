@@ -1,0 +1,197 @@
+/* Geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Montserrat;
+    color: #fff;
+}
+
+body {
+    background-color: #202124;
+}
+
+/* Cabeçalho */
+
+header {
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem 2rem;
+    color: #fff;
+}
+
+#search-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#search-input {
+    background-color: #525356;
+    color: #ddd;
+    border-radius: 1rem;
+    border: none;
+    padding: 10px;
+    font-weight: bold;
+    width: 400px;
+}
+
+#search-input::placeholder {
+    color: #fff;
+}
+
+#export-notes {
+    background-color: #333;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    padding: 5px 15px;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+#export-notes:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+#export-notes:hover > i {
+    color: #333;
+}
+
+/* Form de nova nota */
+
+#add-note-container {
+    display: flex;
+    width: 400px;
+    margin: 1rem auto 0;
+    gap: 1rem;
+}
+
+
+#add-note-container input,
+#add-note-container button {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+#add-note-container input {
+    flex: 1;
+    background-color: transparent;
+    border: 1px solid #525356;
+    color: #fff;
+}
+
+#add-note-container button {
+    cursor: pointer;
+    background-color: #333;
+    color: #fff;
+}
+
+/* Notas - Corpo do Projeto!  */
+
+#notes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 250px);
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.note {
+    min-height: 200px;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    background-color: #202124;
+    border-radius: 10px;
+    color: #fff;
+    position: relative;
+    /* porque position relative? Porque vou ter elementos posicionados de forma absoluta. */
+}
+
+/* Posicionar um elemento de forma absoluta no contexto do desenvolvimento web refere-se ao uso da propriedade position: absolute; em CSS. Isso significa que o elemento será retirado do fluxo normal do documento e posicionado em relação ao seu contêiner mais próximo que esteja posicionado.
+Quando você define um elemento como position: absolute;, você pode usar as propriedades top, right, bottom e left para especificar a distância do elemento em relação ao contêiner posicionado mais próximo. 
+Se nenhum contêiner pai tiver uma posição definida (como relative, absolute, fixed ou sticky), o elemento será posicionado em relação ao elemento <html>. */
+
+.note textarea {
+    background-color: transparent;
+    resize: none;
+    /* resize none é para o usuário não conseguir aumentar ou diminuir o mesmo, assim como vem de padrão! */
+    color: #fff;
+    border: none;
+    height: 100%;
+    outline: none;
+}
+
+.note .bi-pin {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    font-size: 1.2rem;
+    background-color: #333;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.note:hover > i {
+    opacity: 1;
+}
+
+.note .bi-x-lg,
+.note .bi-file-earmark-plus {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: .9rem;
+    padding: 5px;
+    transition: .3s;
+    cursor: pointer;
+    color: #555;
+    opacity: 0;
+}
+
+.note .bi-file-earmark-plus {
+    top: 40px;
+}
+
+.note .bi-x-lg:hover,
+.note .bi-file-earmark-plus:hover {
+    color: #fff;
+}
+
+.note.fixed {
+    background-color: #3c3c3f;
+}
+
+
+/* Responsividade */
+
+@media(max-width: 450px) {
+
+    header {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    #search-container {
+        width: 100%;
+    }
+
+    #search-input {
+        width: 100%;
+    }
+
+
+    #add-note-container {
+        width: 100%;
+        padding: 0 2rem;
+    }
+
+    #notes-container {
+        grid-template-columns: repeat(auto-fill, 100%);
+    }
+}
